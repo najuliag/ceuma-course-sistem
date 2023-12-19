@@ -1,28 +1,36 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
 public class Aluno {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String email;
+    private String telefone;
     private String cpf;
-    private String número;
+    private String endereco;
+    private String cep;
 
-//    @ManyToOne
-//    @JoinColumn(name = "curso_id")
-//    private Curso curso;
+    @ManyToOne
+    @JoinColumn(name = "curso_id")
+    @JsonIgnoreProperties({"alunos", "hibernateLazyInitializer", "handler"})
+    private Curso curso;
 
-    public Aluno(Long id, String nome, String email, String cpf, String número) {
+    public Aluno(Long id,String nome, String email, String cpf, String telefone, String endereco, String cep, Curso curso) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
-        this.número = número;
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.cep = cep;
+        this.curso = curso;
     }
     public Aluno() {
     }
@@ -59,11 +67,35 @@ public class Aluno {
         this.cpf = cpf;
     }
 
-    public String getNúmero() {
-        return número;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setNúmero(String número) {
-        this.número = número;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
     }
 }

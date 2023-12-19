@@ -1,36 +1,24 @@
-package com.example.demo.model;
-
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+package com.example.demo.dto;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-public class Curso {
+public class CursoDTO {
 
-    @Id
-    @GeneratedValue
     private Long id;
     private String curso;
     private LocalDate data;
     private Double horas;
+    private List<AlunoDTO> alunos;
 
-    @OneToMany(mappedBy = "curso")
-    @JsonIgnore
-    private List<Aluno> alunos = new ArrayList<>();
+    public CursoDTO() {
+    }
 
-
-    public Curso(Long id, String curso, LocalDate data, Double horas) {
+    public CursoDTO(Long id, String curso, LocalDate data, Double horas) {
         this.id = id;
         this.curso = curso;
         this.data = data;
         this.horas = horas;
-    }
-
-    public Curso() {
     }
 
     public Long getId() {
@@ -41,20 +29,20 @@ public class Curso {
         this.id = id;
     }
 
-    public LocalDate getData() {
-        return data;
-    }
-
-    public void setData(LocalDate data) {
-        this.data = data;
-    }
-
     public String getCurso() {
         return curso;
     }
 
     public void setCurso(String curso) {
         this.curso = curso;
+    }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public void setData(LocalDate data) {
+        this.data = data;
     }
 
     public Double getHoras() {
@@ -65,11 +53,11 @@ public class Curso {
         this.horas = horas;
     }
 
-    public List<Aluno> getAlunos() {
+    public List<AlunoDTO> getAlunos() {
         return alunos;
     }
 
-    public void setAlunos(List<Aluno> alunos) {
+    public void setAlunos(List<AlunoDTO> alunos) {
         this.alunos = alunos;
     }
 }
