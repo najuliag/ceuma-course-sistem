@@ -3,6 +3,11 @@ package com.example.demo.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 public class Aluno {
@@ -11,8 +16,12 @@ public class Aluno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    @Email
     private String email;
+    @Pattern(regexp = "^\\d{11}$", message = "Número de telefone inválido. O telefone deve conter 11 dígitos.")
     private String telefone;
+    @Pattern(regexp = "^\\d{11}$", message = "Número CPF inválido. O CPF deve conter 11 dígitos.")
+
     private String cpf;
     private String endereco;
     private String cep;

@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.model.Aluno;
 import com.example.demo.services.AlunoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,7 @@ public class AlunoController {
     }
 
     @PostMapping
-    public Aluno create(@RequestBody Aluno aluno){
+    public Aluno create(@RequestBody @Valid Aluno aluno){
         return service.create(aluno);
     }
     @PutMapping(value = "/{id}")

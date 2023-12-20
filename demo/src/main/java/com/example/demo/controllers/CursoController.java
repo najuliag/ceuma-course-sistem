@@ -5,6 +5,7 @@ import com.example.demo.dto.CursoDTO;
 import com.example.demo.exception.ResourceNotFound;
 import com.example.demo.model.Curso;
 import com.example.demo.services.CursoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,7 +42,7 @@ public class CursoController {
     }
 
     @PostMapping
-    public Curso create(@RequestBody Curso curso){
+    public Curso create(@RequestBody @Valid Curso curso){
         curso.setData(LocalDate.now());
         return service.create(curso);
     }
