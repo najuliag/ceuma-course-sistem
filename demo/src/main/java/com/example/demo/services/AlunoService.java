@@ -12,6 +12,7 @@ import java.util.List;
 
 @Service
 public class AlunoService {
+
     @Autowired
     private AlunoRepository repository;
 
@@ -41,8 +42,7 @@ public class AlunoService {
     }
 
     public Aluno update(Aluno aluno, Long id) {
-        Aluno entity = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFound("No records found for this id."));
+        Aluno entity = repository.findById(id).orElseThrow(() -> new ResourceNotFound("No records found for this id."));
 
         if (aluno == null) throw new RequiredObjectIsNull();
 
@@ -58,8 +58,7 @@ public class AlunoService {
     }
 
     public void delete(Long id) {
-        Aluno entity = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFound("No records found for this id."));
+        Aluno entity = repository.findById(id).orElseThrow(() -> new ResourceNotFound("No records found for this id."));
         repository.delete(entity);
     }
 

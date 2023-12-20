@@ -1,13 +1,10 @@
 package com.example.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 public class Aluno {
@@ -15,18 +12,24 @@ public class Aluno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotBlank
     private String nome;
-    @Email
+
+    @Email(message = "Insira um email válido.")
     private String email;
-    @Pattern(regexp = "^\\d{11}$", message = "Número de telefone inválido. O telefone deve conter 11 dígitos.")
+
+    @Size(min = 11, max = 11, message = "O número telefone deve conter 11 dígitos.")
     private String telefone;
-    @Pattern(regexp = "^\\d{11}$", message = "Número CPF inválido. O CPF deve conter 11 dígitos.")
+
+    @Size(min = 11, max = 11, message = "O CPF deve conter 11 dígitos.")
     private String cpf;
+
     @NotBlank
     private String endereco;
+
     @NotBlank
-    @Pattern(regexp = "^\\d{8}$", message = "O CEP deve conter 8 números.")
+    @Size(min = 8, max = 8, message = "O CEP deve conter 8 números.")
     private String cep;
 
     @ManyToOne
@@ -44,8 +47,8 @@ public class Aluno {
         this.cep = cep;
         this.curso = curso;
     }
-    public Aluno() {
-    }
+
+    public Aluno() {}
 
     public Long getId() {
         return id;

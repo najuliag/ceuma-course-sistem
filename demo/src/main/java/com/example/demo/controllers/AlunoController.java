@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/alunos")
+@RequestMapping(value = "/api/alunos")
 public class AlunoController {
 
     @Autowired
@@ -30,10 +30,12 @@ public class AlunoController {
     public Aluno create(@RequestBody @Valid Aluno aluno){
         return service.create(aluno);
     }
+
     @PutMapping(value = "/{id}")
     public Aluno update(@RequestBody @Valid Aluno aluno, @PathVariable Long id){
         return service.update(aluno, id);
     }
+
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) throws Exception{
         service.delete(id);

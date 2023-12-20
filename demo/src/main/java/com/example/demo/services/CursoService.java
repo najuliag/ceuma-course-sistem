@@ -25,9 +25,11 @@ public class CursoService {
 
         if (curso == null) throw new RequiredObjectIsNull();
 
-        List<AlunoDTO> alunosDTO = curso.getAlunos().stream()
+        List<AlunoDTO> alunosDTO = curso.getAlunos()
+                .stream()
                 .map(aluno -> new AlunoDTO(aluno.getId(), aluno.getNome()))
                 .collect(Collectors.toList());
+
         CursoDTO cursoDTO = new CursoDTO();
         cursoDTO.setId(curso.getId());
         cursoDTO.setCurso(curso.getCurso());
@@ -42,7 +44,8 @@ public class CursoService {
 
         return cursos.stream()
                 .map(curso -> {
-                    List<AlunoDTO> alunosDTO = curso.getAlunos().stream()
+                    List<AlunoDTO> alunosDTO = curso.getAlunos()
+                            .stream()
                             .map(aluno -> new AlunoDTO(aluno.getId(), aluno.getNome()))
                             .collect(Collectors.toList());
 
@@ -72,8 +75,7 @@ public class CursoService {
     }
 
     public Curso update(Curso curso, Long id) {
-         Curso entity = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFound("No records found for this id."));
+        Curso entity = repository.findById(id).orElseThrow(() -> new ResourceNotFound("No records found for this id."));
 
         if (curso == null) throw new RequiredObjectIsNull();
 

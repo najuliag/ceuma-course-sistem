@@ -15,17 +15,19 @@ public class Curso {
     @Id
     @GeneratedValue
     private Long id;
+
     @NotBlank
     private String curso;
+
     @NotBlank
     private LocalDate data;
+
     @NotBlank
     private Double horas;
 
     @OneToMany(mappedBy = "curso")
     @JsonIgnore
     private List<Aluno> alunos = new ArrayList<>();
-
 
     public Curso(Long id, String curso, LocalDate data, Double horas) {
         this.id = id;
@@ -34,8 +36,7 @@ public class Curso {
         this.horas = horas;
     }
 
-    public Curso() {
-    }
+    public Curso() {}
 
     public Long getId() {
         return id;

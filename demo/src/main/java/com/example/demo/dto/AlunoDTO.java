@@ -1,13 +1,16 @@
 package com.example.demo.dto;
 
 public class AlunoDTO {
+
     private Long id;
+
     private String nome;
 
     public AlunoDTO(Long id, String nome) {
         this.id = id;
         this.nome = nome;
     }
+
     public AlunoDTO() {
     }
 

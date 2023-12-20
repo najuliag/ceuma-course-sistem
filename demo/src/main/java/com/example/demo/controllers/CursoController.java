@@ -1,6 +1,5 @@
 package com.example.demo.controllers;
 
-import com.example.demo.dto.AlunoDTO;
 import com.example.demo.dto.CursoDTO;
 import com.example.demo.exception.ResourceNotFound;
 import com.example.demo.model.Curso;
@@ -15,7 +14,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/cursos")
+@RequestMapping(value = "/api/cursos")
 public class CursoController {
 
     @Autowired

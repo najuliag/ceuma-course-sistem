@@ -5,10 +5,15 @@ import java.util.List;
 
 public class CursoDTO {
 
+
     private Long id;
+
     private String curso;
+
     private LocalDate data;
+
     private Double horas;
+
     private List<AlunoDTO> alunos;
 
     public CursoDTO() {
