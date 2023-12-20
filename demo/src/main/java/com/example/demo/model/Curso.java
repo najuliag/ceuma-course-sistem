@@ -3,6 +3,7 @@ package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,8 +15,11 @@ public class Curso {
     @Id
     @GeneratedValue
     private Long id;
+    @NotBlank
     private String curso;
+    @NotBlank
     private LocalDate data;
+    @NotBlank
     private Double horas;
 
     @OneToMany(mappedBy = "curso")

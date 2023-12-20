@@ -48,7 +48,7 @@ public class CursoController {
     }
 
     @PutMapping(value = "/{id}")
-    public Curso update(@RequestBody Curso curso, @PathVariable Long id){
+    public Curso update(@RequestBody @Valid Curso curso, @PathVariable Long id){
         return service.update(curso, id);
     }
 

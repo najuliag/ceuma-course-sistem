@@ -15,15 +15,18 @@ public class Aluno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
     private String nome;
     @Email
     private String email;
     @Pattern(regexp = "^\\d{11}$", message = "Número de telefone inválido. O telefone deve conter 11 dígitos.")
     private String telefone;
     @Pattern(regexp = "^\\d{11}$", message = "Número CPF inválido. O CPF deve conter 11 dígitos.")
-
     private String cpf;
+    @NotBlank
     private String endereco;
+    @NotBlank
+    @Pattern(regexp = "^\\d{8}$", message = "O CEP deve conter 8 números.")
     private String cep;
 
     @ManyToOne

@@ -31,7 +31,7 @@ public class AlunoController {
         return service.create(aluno);
     }
     @PutMapping(value = "/{id}")
-    public Aluno update(@RequestBody Aluno aluno, @PathVariable Long id){
+    public Aluno update(@RequestBody @Valid Aluno aluno, @PathVariable Long id){
         return service.update(aluno, id);
     }
     @DeleteMapping(value = "/{id}")
